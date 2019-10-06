@@ -1,6 +1,6 @@
 # Hyperpack
 
-Small and simple modpack construction tool.
+Simple and lightweight modpack construction tool.
 
 ## Example pack definition
 
