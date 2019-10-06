@@ -1,0 +1,190 @@
+properties:
+  title: "Descent: Frozen Hell"
+  version: "1.3"
+  authors:
+      - "CitadelCore"
+      - "Skye"
+      - "ThePiGuy24"
+  minecraft:
+      version: "1.12.2"
+      forge: "latest"
+sources:
+  - provider: curse
+    attributes:
+      whitelist:
+        - release
+        - beta
+        - alpha
+    mods:
+      # BrisingrAerowing - OpenComputers Book Converter
+      - 326890
+
+      # RWTema
+      - extraUtilities
+
+      # Better with mods stuff
+      - betterWithEngineering
+      - bwmSuite
+
+      # InsomniaKitten
+      - wearableBackpacks
+
+      # Glitchfiend
+      - toughAsNails
+
+      # shadowfactsmc
+      - shadowfactsForgelin
+
+      # BluSunrize
+      - immersiveEngineering
+      # Flaxbeard
+      - immersivePetroleum
+      # FerroO2000
+      - immersiveTech
+
+      # Mr_TJP
+      - mrtjpcore
+      - projectRedBase
+      - projectRedCompat
+      - projectRedFabrication
+      - projectRedIntegration
+      - projectRedLighting
+      - projectRedWorld
+
+      # chicken_bones
+      - codeChickenLib18
+      - forgeMultipartCbe
+
+      # Vazkii
+      - autoreglib
+
+      # chiselTeam
+      - chisel
+      # AlgorithmX2
+      - chiselsBits
+
+      # jaredlll08
+      - mtlib
+      - crafttweaker
+      - modtweaker
+
+      # mezz
+      - jei
+
+      # Team CoFH
+      - cofhCore
+      - cofhWorld
+      - redstoneFlux
+      - thermalDynamics
+      - thermalExpansion
+
+      # azanor
+      - thaumcraft
+      - thaumicComputers
+      - thaumicEnergistics
+      - thaumicAugmentation
+      - baubles
+
+      # asie
+      # Charset Modules
+      - charsetLib
+      - charsetTweaks
+      - charsetImmersion
+      - charsetAudio
+      - charsetTablet
+      - charsetTools
+      - charsetBlockCarrying
+      - charsetpatches
+      - charsetStorageLocks
+
+      # Other
+      - foamfixForMinecraft
+      - opencomputers
+      - openprinter
+      - zettaindustries
+      - hwyla
+      - railcraft
+      - spawnerImbuer
+      - teslaCoreLib
+      - industrialForegoing
+      - integrationForegoing
+      - colytra
+      - moreplates
+      - journeymap
+      - gravestoneMod
+
+      - redstoneArsenal
+      - icbmClassic
+      - atomicScience
+      - avaritia110
+      - avaritiaComplement
+      - moreAvaritia
+
+      # TeamDmfMM
+      - catwalks4
+
+      # ondrejduchon
+      - treeChopper
+
+      # malte0811
+      - industrialWires
+
+      # PC-Logix
+      - openfm
+
+      # jaquadro
+      - chameleon
+      - storageDrawers
+
+      # AlgorithmX2
+      - appliedEnergistics2
+      - extracells2
+
+      # SanAndreasP
+      - immersiveCables
+      - alternatingFlux
+
+      # better builder's wands
+      - betterBuildersWands
+    groups:
+      - side: server
+        mods:
+          - swingthroughgrass
+          - matterlink
+      - side: client
+        mods:
+          - thaumicJei
+          - justEnoughResourcesJer
+          - inventoryTweaks
+          - betterAdvancements
+        groups:
+          - selected: true
+            attributes:
+              skRecommendation: starred
+            mods:
+              - dynamicSurroundings:
+                  description: "Caution: Resource heavy. Quite nice, has a lot of configurable features that add immersive sound/visual effects. Includes light-level overlay. (Defaults set to remove some sounds and generally be better.)"
+              - dynamicLights:
+                  description: "Caution: Resource heavy. Turn this off if your computer isn't powerful enough."
+          - selected: false
+            mods:
+              - betterFoliage:
+                  description: "Caution: Resource heavy. Disabled by default because there are a few render bugs."
+              - fancyBlockParticles:
+                  description: "Caution: Resource heavy. Adds some flair to particle effects and animations. Highly configurable, costs fps. (Defaults set to be less intrusive.)"
+              - fasterLadderClimbing:
+                  description: "Helps you control ladder climb speed and allows you to go a bit faster."
+              - nbtedit:
+                  description: "Can be used to view NBT trees. Developer use only."
+      - side: both
+        mods:
+        - laggogles:
+            description: "***Admin/diagnostic tool. Leave off unless asked to help test performance issues."
+        - sampler:
+            description: "***Admin/diagnostic tool. Leave off unless asked to help test performance issues."
+        - openeye:
+            description: "Automatically collects and submits crash reports. Enable if asked or wish to help sort issues with the pack."
+  - provider: url
+    mods:
+    - "http://files.vexatos.com/Computronics/Computronics-1.12.2-1.6.6.jar"
+    - "https://launcher.towerdevs.xyz/external/thaumictinkerer-1.12.2-5.0-41d79cc.jar"
