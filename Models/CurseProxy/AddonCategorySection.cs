@@ -1,17 +1,17 @@
 using Newtonsoft.Json;
 
-namespace Hyperpack.Models.CurseV2
+namespace Hyperpack.Models.CurseProxy
 {
     public struct AddonCategorySection
     {
-        [JsonProperty("Id")]
-        public int Id;
-
         [JsonProperty("extraIncludePattern")]
         public string ExtraIncludePattern;
 
         [JsonProperty("gameId")]
         public int GameId;
+
+        [JsonProperty("Id")]
+        public int Id;
 
         [JsonProperty("initialInclusionPattern")]
         public string InitialInclusionPattern;
@@ -20,7 +20,7 @@ namespace Hyperpack.Models.CurseV2
         public string Name;
 
         [JsonProperty("packageType")]
-        public int PackageType;
+        public PackageType PackageType;
 
         [JsonProperty("path")]
         public string Path;

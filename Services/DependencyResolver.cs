@@ -1,6 +1,7 @@
 using Hyperpack.Services.Providers;
 using Hyperpack.Models.Internal;
 using System;
+using System.Threading.Tasks;
 using System.Collections.Generic;
 
 using Microsoft.Extensions.DependencyInjection;
@@ -29,8 +30,7 @@ namespace Hyperpack.Services
             }
         }
 
-        public IList<IResolvedMod> Resolve(Pack pack) {
-            
+        public async Task<IList<IResolvedMod>> ResolveAsync(Pack pack) {
             var list = new List<Source>();
 
             foreach (var source in pack.Sources) {
@@ -39,8 +39,8 @@ namespace Hyperpack.Services
 
             var resolved = new List<IResolvedMod>();
             foreach (var source in list) {
-                // build the list of mods this provider needs to resolve
-                var mods = Providers[source.Provider].Resolve(source);
+                // resolve the list of mods
+                var mods = await Providers[source.Provider].ResolveAsync(source, pack.Properties.Minecraft);
                 resolved.AddRange(mods);
             }
 

@@ -1,4 +1,5 @@
 using Hyperpack.Models.Internal;
+using System.Threading.Tasks;
 
 namespace Hyperpack.Services.Providers
 {
@@ -7,6 +8,6 @@ namespace Hyperpack.Services.Providers
         /// <summary>
         /// Resolves all mods contained in a source group.
         /// </summary>
-        public IResolvedMod[] Resolve(Source source);
+        public Task<IResolvedMod[]> ResolveAsync(Source source, PackPropertiesMinecraft props);
     }
 }

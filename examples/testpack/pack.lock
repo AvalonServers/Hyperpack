@@ -1,0 +1,586 @@
+{
+  "Properties": {
+    "Title": "Descent: Frozen Hell",
+    "Version": "1.3",
+    "Authors": [
+      "CitadelCore",
+      "Skye",
+      "ThePiGuy24"
+    ],
+    "Minecraft": {
+      "Versions": [
+        "1.12.2",
+        "1.12"
+      ],
+      "Forge": "latest"
+    }
+  },
+  "Sources": [
+    {
+      "Provider": "curse",
+      "Attributes": {
+        "whitelist": [
+          "release",
+          "beta",
+          "alpha"
+        ]
+      },
+      "Mods": [
+        "326890",
+        "extraUtilities",
+        "betterWithEngineering",
+        "bwmSuite",
+        "wearableBackpacks",
+        "toughAsNails",
+        "shadowfactsForgelin",
+        "immersiveEngineering",
+        "immersivePetroleum",
+        "immersiveTech",
+        "mrtjpcore",
+        "projectRedBase",
+        "projectRedCompat",
+        "projectRedFabrication",
+        "projectRedIntegration",
+        "projectRedLighting",
+        "projectRedWorld",
+        "codeChickenLib18",
+        "forgeMultipartCbe",
+        "autoreglib",
+        "chisel",
+        "chiselsBits",
+        "mtlib",
+        "crafttweaker",
+        "modtweaker",
+        "jei",
+        "cofhCore",
+        "cofhWorld",
+        "redstoneFlux",
+        "thermalDynamics",
+        "thermalExpansion",
+        "thaumcraft",
+        "thaumicComputers",
+        "thaumicEnergistics",
+        "thaumicAugmentation",
+        "baubles",
+        "charsetLib",
+        "charsetTweaks",
+        "charsetImmersion",
+        "charsetAudio",
+        "charsetTablet",
+        "charsetTools",
+        "charsetBlockCarrying",
+        "charsetpatches",
+        "charsetStorageLocks",
+        "foamfixForMinecraft",
+        "opencomputers",
+        "openprinter",
+        "zettaindustries",
+        "hwyla",
+        "railcraft",
+        "spawnerImbuer",
+        "teslaCoreLib",
+        "industrialForegoing",
+        "integrationForegoing",
+        "colytra",
+        "moreplates",
+        "journeymap",
+        "gravestoneMod",
+        "redstoneArsenal",
+        "icbmClassic",
+        "atomicScience",
+        "avaritia110",
+        "avaritiaComplement",
+        "moreAvaritia",
+        "catwalks4",
+        "treeChopper",
+        "industrialWires",
+        "openfm",
+        "chameleon",
+        "storageDrawers",
+        "appliedEnergistics2",
+        "extracells2",
+        "immersiveCables",
+        "alternatingFlux",
+        "betterBuildersWands"
+      ],
+      "Groups": [
+        {
+          "Selected": null,
+          "Side": 1,
+          "Provider": "curse",
+          "Attributes": {
+            "whitelist": [
+              "release",
+              "beta",
+              "alpha"
+            ]
+          },
+          "Mods": [
+            "swingthroughgrass"
+          ],
+          "Groups": null
+        },
+        {
+          "Selected": null,
+          "Side": 0,
+          "Provider": "curse",
+          "Attributes": {
+            "whitelist": [
+              "release",
+              "beta",
+              "alpha"
+            ]
+          },
+          "Mods": [
+            "thaumicJei",
+            "justEnoughResourcesJer",
+            "inventoryTweaks",
+            "betterAdvancements"
+          ],
+          "Groups": [
+            {
+              "Selected": true,
+              "Side": 0,
+              "Provider": "curse",
+              "Attributes": {
+                "skRecommendation": "starred",
+                "whitelist": [
+                  "release",
+                  "beta",
+                  "alpha"
+                ]
+              },
+              "Mods": [
+                {
+                  "dynamicSurroundings": {
+                    "description": "Caution: Resource heavy. Quite nice, has a lot of configurable features that add immersive sound/visual effects. Includes light-level overlay. (Defaults set to remove some sounds and generally be better.)"
+                  }
+                },
+                {
+                  "dynamicLights": {
+                    "description": "Caution: Resource heavy. Turn this off if your computer isn't powerful enough."
+                  }
+                }
+              ],
+              "Groups": null
+            },
+            {
+              "Selected": false,
+              "Side": 0,
+              "Provider": "curse",
+              "Attributes": {
+                "whitelist": [
+                  "release",
+                  "beta",
+                  "alpha"
+                ]
+              },
+              "Mods": [
+                {
+                  "betterFoliage": {
+                    "description": "Caution: Resource heavy. Disabled by default because there are a few render bugs."
+                  }
+                },
+                {
+                  "fancyBlockParticles": {
+                    "description": "Caution: Resource heavy. Adds some flair to particle effects and animations. Highly configurable, costs fps. (Defaults set to be less intrusive.)"
+                  }
+                },
+                {
+                  "fasterLadderClimbing": {
+                    "description": "Helps you control ladder climb speed and allows you to go a bit faster."
+                  }
+                },
+                {
+                  "nbtedit": {
+                    "description": "Can be used to view NBT trees. Developer use only."
+                  }
+                }
+              ],
+              "Groups": null
+            }
+          ]
+        },
+        {
+          "Selected": null,
+          "Side": 2,
+          "Provider": "curse",
+          "Attributes": {
+            "whitelist": [
+              "release",
+              "beta",
+              "alpha"
+            ]
+          },
+          "Mods": [
+            {
+              "laggoggles": {
+                "description": "***Admin/diagnostic tool. Leave off unless asked to help test performance issues."
+              }
+            },
+            {
+              "sampler": {
+                "description": "***Admin/diagnostic tool. Leave off unless asked to help test performance issues."
+              }
+            },
+            {
+              "openeye": {
+                "description": "Automatically collects and submits crash reports. Enable if asked or wish to help sort issues with the pack."
+              }
+            }
+          ],
+          "Groups": null
+        }
+      ]
+    },
+    {
+      "Provider": "url",
+      "Attributes": null,
+      "Mods": [
+        "http://files.vexatos.com/Computronics/Computronics-1.12.2-1.6.6.jar",
+        "https://launcher.towerdevs.xyz/external/thaumictinkerer-1.12.2-5.0-41d79cc.jar"
+      ],
+      "Groups": null
+    }
+  ],
+  "LockedContent": [
+    {
+      "AddonId": 264353,
+      "FileId": 0,
+      "Provider": 1,
+      "Identifier": "8cc5ec14-1d19-42cb-96e0-a0708316190a",
+      "Checksum": 3049467045,
+      "Url": "https://edge.forgecdn.net/files/2507/975/stg-1.12.2-1.2.2.jar"
+    },
+    {
+      "AddonId": 227874,
+      "FileId": 0,
+      "Provider": 1,
+      "Identifier": "ea38f38a-ed2f-4f01-9788-4f005453445f",
+      "Checksum": 3445197623,
+      "Url": "https://edge.forgecdn.net/files/2444/10/DynamicLights-1.12.jar"
+    },
+    {
+      "AddonId": 307806,
+      "FileId": 0,
+      "Provider": 1,
+      "Identifier": "25d7b2e4-1233-4900-a3ae-c1aa602cfe2a",
+      "Checksum": 3416041519,
+      "Url": "https://edge.forgecdn.net/files/2802/980/OreLib-1.12.2-3.5.2.3.jar"
+    },
+    {
+      "AddonId": 238891,
+      "FileId": 0,
+      "Provider": 1,
+      "Identifier": "8b2a1117-236e-4e3a-9dfa-abfc1f7d38d6",
+      "Checksum": 1898227343,
+      "Url": "https://edge.forgecdn.net/files/2820/763/DynamicSurroundings-1.12.2-3.6.0.1.jar"
+    },
+    {
+      "AddonId": 258881,
+      "FileId": 0,
+      "Provider": 1,
+      "Identifier": "262d3194-9567-4585-9a0c-9e5f7de70e86",
+      "Checksum": 3143310815,
+      "Url": "https://edge.forgecdn.net/files/2465/740/FasterLadderClimbing-1.12-0.1-127.jar"
+    },
+    {
+      "AddonId": 247580,
+      "FileId": 0,
+      "Provider": 1,
+      "Identifier": "0a5138eb-fcbb-4065-b6ea-a431bbf79fe7",
+      "Checksum": 3075443503,
+      "Url": "https://edge.forgecdn.net/files/2448/708/NBTEdit-0.7.jar"
+    },
+    {
+      "AddonId": 248453,
+      "FileId": 0,
+      "Provider": 1,
+      "Identifier": "3613d48b-94bb-48b8-afb9-56fbd898f2f0",
+      "Checksum": 387064965,
+      "Url": "https://edge.forgecdn.net/files/2785/465/Forgelin-1.8.4.jar"
+    },
+    {
+      "AddonId": 228529,
+      "FileId": 0,
+      "Provider": 1,
+      "Identifier": "870ddc03-c6da-46a3-abf7-eacc9c7859f3",
+      "Checksum": 372836507,
+      "Url": "https://edge.forgecdn.net/files/2851/883/BetterFoliage-MC1.12-2.3.0.jar"
+    },
+    {
+      "AddonId": 254441,
+      "FileId": 0,
+      "Provider": 1,
+      "Identifier": "c98abe3e-c8f1-43ad-9c74-a01457170b7d",
+      "Checksum": 4174754362,
+      "Url": "https://edge.forgecdn.net/files/2522/777/FancyBlockParticles-1.12.x-2.3.6.jar"
+    },
+    {
+      "AddonId": 238222,
+      "FileId": 0,
+      "Provider": 1,
+      "Identifier": "92e5633e-7859-4c08-b50e-b60688b4afa3",
+      "Checksum": 3391578337,
+      "Url": "https://edge.forgecdn.net/files/2803/400/jei_1.12.2-4.15.0.291.jar"
+    },
+    {
+      "AddonId": 240630,
+      "FileId": 0,
+      "Provider": 1,
+      "Identifier": "10130184-b510-4af6-9420-ad29d4512623",
+      "Checksum": 537556958,
+      "Url": "https://edge.forgecdn.net/files/2728/585/JustEnoughResources-1.12.2-0.9.2.60.jar"
+    },
+    {
+      "AddonId": 223094,
+      "FileId": 0,
+      "Provider": 1,
+      "Identifier": "27d08485-f47b-4143-ac8e-979383d98e8d",
+      "Checksum": 1037406193,
+      "Url": "https://edge.forgecdn.net/files/2848/933/InventoryTweaks-1.64+dev.150.jar"
+    },
+    {
+      "AddonId": 227083,
+      "FileId": 0,
+      "Provider": 1,
+      "Identifier": "cf7ac5a8-8e42-4640-b5fb-968c279415b2",
+      "Checksum": 1473911213,
+      "Url": "https://edge.forgecdn.net/files/2459/83/Baubles-1.12-1.5.1.jar"
+    },
+    {
+      "AddonId": 223628,
+      "FileId": 0,
+      "Provider": 1,
+      "Identifier": "ecb91259-f968-4830-a25b-0e901659fcc5",
+      "Checksum": 1607642850,
+      "Url": "https://edge.forgecdn.net/files/2629/23/Thaumcraft-1.12.2-6.1.BETA26.jar"
+    },
+    {
+      "AddonId": 285492,
+      "FileId": 0,
+      "Provider": 1,
+      "Identifier": "5d16fb6d-e82b-4ce9-8f3d-d7a746bac7db",
+      "Checksum": 2714741218,
+      "Url": "https://edge.forgecdn.net/files/2696/415/ThaumicJEI-1.12.2-1.5.7-25.jar"
+    },
+    {
+      "AddonId": 272515,
+      "FileId": 0,
+      "Provider": 1,
+      "Identifier": "749b8c1e-0094-4147-b075-887df06fb4a6",
+      "Checksum": 2384036114,
+      "Url": "https://edge.forgecdn.net/files/2544/977/BetterAdvancements-1.12.2-0.0.6.20.jar"
+    },
+    {
+      "AddonId": 289242,
+      "FileId": 0,
+      "Provider": 1,
+      "Identifier": "836880b8-bdcb-4594-8ecb-5301f759fab9",
+      "Checksum": 2389231956,
+      "Url": "https://edge.forgecdn.net/files/2698/780/sampler-1.83.jar"
+    },
+    {
+      "AddonId": 251457,
+      "FileId": 0,
+      "Provider": 1,
+      "Identifier": "9c4b6798-70c2-4162-becb-ad3d44229e9b",
+      "Checksum": 1171293484,
+      "Url": "https://edge.forgecdn.net/files/2545/677/OpenEye-1.12.2-0.8.jar"
+    },
+    {
+      "AddonId": 283525,
+      "FileId": 0,
+      "Provider": 1,
+      "Identifier": "258ff653-9deb-44bd-8c51-29ff07127fb9",
+      "Checksum": 1209320348,
+      "Url": "https://edge.forgecdn.net/files/2821/475/LagGoggles-THIN-1.12.2-4.9.jar"
+    },
+    {
+      "AddonId": 223008,
+      "FileId": 0,
+      "Provider": 1,
+      "Identifier": "f135d4cb-8c17-4e9d-a44a-2fefefacccf3",
+      "Checksum": 3597605255,
+      "Url": "https://edge.forgecdn.net/files/2828/357/OpenComputers-MC1.12.2-1.7.5.192.jar"
+    },
+    {
+      "AddonId": 326890,
+      "FileId": 0,
+      "Provider": 1,
+      "Identifier": "a6c85b46-768b-46e1-ab39-2bfd72b610ed",
+      "Checksum": 406342980,
+      "Url": "https://edge.forgecdn.net/files/2738/502/ocbookconv-0.1.jar"
+    },
+    {
+      "AddonId": 32274,
+      "FileId": 0,
+      "Provider": 1,
+      "Identifier": "cbecdae4-ae85-45e7-a61e-3a26392e1a20",
+      "Checksum": 1184925075,
+      "Url": "https://edge.forgecdn.net/files/2844/789/journeymap-1.12.2-5.5.6.jar"
+    },
+    {
+      "AddonId": 236839,
+      "FileId": 0,
+      "Provider": 1,
+      "Identifier": "0e1a6a71-8006-40c3-8dd9-01ffc71cbce4",
+      "Checksum": 3846407186,
+      "Url": "https://edge.forgecdn.net/files/2575/236/OpenFM-1.12.2-0.1.0.14.jar"
+    },
+    {
+      "AddonId": 250363,
+      "FileId": 0,
+      "Provider": 1,
+      "Identifier": "3665a401-958e-4730-b61c-0ab6386b6c91",
+      "Checksum": 1362393753,
+      "Url": "https://edge.forgecdn.net/files/2573/417/AutoRegLib-1.3-18.jar"
+    },
+    {
+      "AddonId": 250241,
+      "FileId": 0,
+      "Provider": 1,
+      "Identifier": "401ce33d-d676-45f0-bf84-7779fe39c7b0",
+      "Checksum": 3667268242,
+      "Url": "https://edge.forgecdn.net/files/2467/62/TreeChopper-1.12-1.2.2.jar"
+    },
+    {
+      "AddonId": 270789,
+      "FileId": 0,
+      "Provider": 1,
+      "Identifier": "0b1da6e3-3e28-450f-b23f-153b6f6226ad",
+      "Checksum": 1941774686,
+      "Url": "https://edge.forgecdn.net/files/2623/90/RedstoneFlux-1.12-2.1.0.6-universal.jar"
+    },
+    {
+      "AddonId": 257572,
+      "FileId": 0,
+      "Provider": 1,
+      "Identifier": "3a531bfc-9a29-4baf-bfeb-25d6453fb14f",
+      "Checksum": 200631767,
+      "Url": "https://edge.forgecdn.net/files/2800/372/WearableBackpacks-1.12.2-3.1.4.jar"
+    },
+    {
+      "AddonId": 301054,
+      "FileId": 0,
+      "Provider": 1,
+      "Identifier": "b43011e5-eb1c-4b18-8252-ee90f3333719",
+      "Checksum": 1828798477,
+      "Url": "https://edge.forgecdn.net/files/2745/10/Charset-ToolsEngineering-0.5.6.0.jar"
+    },
+    {
+      "AddonId": 267602,
+      "FileId": 0,
+      "Provider": 1,
+      "Identifier": "e9269da2-bc33-4150-aec8-b4e1ef4894d0",
+      "Checksum": 151427549,
+      "Url": "https://edge.forgecdn.net/files/2832/564/CTM-MC1.12.2-1.0.1.30.jar"
+    },
+    {
+      "AddonId": 231951,
+      "FileId": 0,
+      "Provider": 1,
+      "Identifier": "89c3cd3a-be1b-4a43-a315-078aef17db7e",
+      "Checksum": 2198758002,
+      "Url": "https://edge.forgecdn.net/files/2777/603/ImmersiveEngineering-0.12-91.jar"
+    },
+    {
+      "AddonId": 242638,
+      "FileId": 0,
+      "Provider": 1,
+      "Identifier": "9ea73e75-cbf4-4626-80c3-6c7637cd76e8",
+      "Checksum": 3351050247,
+      "Url": "https://edge.forgecdn.net/files/2835/644/industrialcraft-2-2.8.188-ex112.jar"
+    },
+    {
+      "AddonId": 251121,
+      "FileId": 0,
+      "Provider": 1,
+      "Identifier": "8fd96031-5b0c-4b1b-beaf-33c55ccbcb4e",
+      "Checksum": 4270395456,
+      "Url": "https://edge.forgecdn.net/files/2659/323/IndustrialWires-1.7-34.jar"
+    },
+    {
+      "AddonId": 223794,
+      "FileId": 0,
+      "Provider": 1,
+      "Identifier": "1abf119d-d720-4cef-b44b-234dcf3d7b0c",
+      "Checksum": 2060134526,
+      "Url": "https://edge.forgecdn.net/files/2582/952/appliedenergistics2-rv6-alpha-3.jar"
+    },
+    {
+      "AddonId": 243076,
+      "FileId": 0,
+      "Provider": 1,
+      "Identifier": "a141ed90-1e54-40c6-88ab-0ca0cba75629",
+      "Checksum": 2286646085,
+      "Url": "https://edge.forgecdn.net/files/2632/393/refinedstorage-1.6.9.jar"
+    },
+    {
+      "AddonId": 283992,
+      "FileId": 0,
+      "Provider": 1,
+      "Identifier": "ef037b0b-5034-434d-b820-cbd2d0ef592c",
+      "Checksum": 2021625431,
+      "Url": "https://edge.forgecdn.net/files/2579/102/ImmersiveCables-1.12.2-1.3.1.jar"
+    },
+    {
+      "AddonId": 242818,
+      "FileId": 0,
+      "Provider": 1,
+      "Identifier": "f91c6d7a-7187-4d85-b2f7-ae4ee30aefec",
+      "Checksum": 1333137881,
+      "Url": "https://edge.forgecdn.net/files/2755/781/CodeChickenLib-1.12.2-3.2.3.357-universal.jar"
+    },
+    {
+      "AddonId": 258426,
+      "FileId": 0,
+      "Provider": 1,
+      "Identifier": "e4fbfaeb-d4cc-4f2a-9831-e2eb545fbe26",
+      "Checksum": 3090990458,
+      "Url": "https://edge.forgecdn.net/files/2755/790/ForgeMultipart-1.12.2-2.6.2.83-universal.jar"
+    },
+    {
+      "AddonId": 280200,
+      "FileId": 0,
+      "Provider": 1,
+      "Identifier": "dd81deab-ed9a-44ea-a8c4-a927f972a473",
+      "Checksum": 4116341275,
+      "Url": "https://edge.forgecdn.net/files/2828/877/colytra-1.12.2-1.2.0.4.jar"
+    },
+    {
+      "AddonId": 239431,
+      "FileId": 0,
+      "Provider": 1,
+      "Identifier": "90465f6e-dbb8-482b-9fa9-468ad8f9dcc8",
+      "Checksum": 909753984,
+      "Url": "https://edge.forgecdn.net/files/2615/930/MCMultiPart-2.5.3.jar"
+    },
+    {
+      "AddonId": 238222,
+      "FileId": 0,
+      "Provider": 1,
+      "Identifier": "74ed3418-d2cf-4788-b847-662bab57398f",
+      "Checksum": 3391578337,
+      "Url": "https://edge.forgecdn.net/files/2803/400/jei_1.12.2-4.15.0.291.jar"
+    },
+    {
+      "AddonId": 231095,
+      "FileId": 0,
+      "Provider": 1,
+      "Identifier": "2a50666a-d505-4abe-a45e-c6de3a528e20",
+      "Checksum": 3917886323,
+      "Url": "https://edge.forgecdn.net/files/2640/753/chiselsandbits-14.29.jar"
+    },
+    {
+      "Provider": 0,
+      "Identifier": "d8eb7811-840b-49cd-9081-07c5edb096fb",
+      "Url": "http://files.vexatos.com/Computronics/Computronics-1.12.2-1.6.6.jar"
+    },
+    {
+      "Provider": 0,
+      "Identifier": "592af48b-2527-4c2a-8d79-88ac4d98247b",
+      "Url": "https://launcher.towerdevs.xyz/external/thaumictinkerer-1.12.2-5.0-41d79cc.jar"
+    }
+  ]
+}

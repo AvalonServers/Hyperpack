@@ -1,11 +1,14 @@
 using Newtonsoft.Json;
 
-namespace Hyperpack.Models.CurseV2
+namespace Hyperpack.Models.CurseProxy
 {
     public struct AddonCategory
     {
-        [JsonProperty("id")]
-        public int Id;
+        [JsonProperty("avatarUrl")]
+        public string AvatarUrl;
+
+        [JsonProperty("categoryId")]
+        public int CategoryId;
 
         [JsonProperty("name")]
         public string Name;

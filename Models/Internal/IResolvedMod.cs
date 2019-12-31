@@ -1,11 +1,10 @@
-using System.Threading.Tasks;
+using System;
 
 namespace Hyperpack.Models.Internal
 {
     public interface IResolvedMod
     {
-        string Provider { get; }
-
-        Task DownloadAsync();
+        ProviderType Provider { get; }
+        public Guid Identifier { get; }
     }
 }

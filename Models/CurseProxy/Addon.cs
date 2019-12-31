@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
+using System;
 
-namespace Hyperpack.Models.CurseV2
+namespace Hyperpack.Models.CurseProxy
 {
     public struct Addon
     {
@@ -10,35 +11,26 @@ namespace Hyperpack.Models.CurseV2
         [JsonProperty("authors")]
         public AddonAuthor[] Authors;
 
-        [JsonProperty("avatarUrl")]
-        public string AvatarUrl;
-
         [JsonProperty("categories")]
         public AddonCategory[] Categories;
-
-        [JsonProperty("categoryList")]
-        public string CategoryList;
 
         [JsonProperty("categorySection")]
         public AddonCategorySection CategorySection;
 
-        [JsonProperty("clientUrl")]
-        public string ClientUrl;
+        [JsonProperty("dateCreated")]
+        public DateTime DateCreated;
 
-        [JsonProperty("commentCount")]
-        public int CommentCount;
+        [JsonProperty("dateModified")]
+        public DateTime DateModified;
 
-        [JsonProperty("donationUrl")]
-        public string DonationUrl;
+        [JsonProperty("dateReleased")]
+        public DateTime DateReleased;
+
+        [JsonProperty("defaultFileId")]
+        public int DefaultFileId;
 
         [JsonProperty("downloadCount")]
-        public float DownloadCount;
-
-        [JsonProperty("externalUrl")]
-        public string ExternalUrl;
-
-        [JsonProperty("fullDescription")]
-        public string FullDescription;
+        public int DownloadCount;
 
         [JsonProperty("gameId")]
         public int GameId;
@@ -55,9 +47,6 @@ namespace Hyperpack.Models.CurseV2
         [JsonProperty("id")]
         public int Id;
 
-        [JsonProperty("installCount")]
-        public int InstallCount;
-
         [JsonProperty("isAvailable")]
         public bool IsAvailable;
 
@@ -65,10 +54,7 @@ namespace Hyperpack.Models.CurseV2
         public bool IsFeatured;
 
         [JsonProperty("latestFiles")]
-        public File[] LatestFiles;
-
-        [JsonProperty("likes")]
-        public int Likes;
+        public GameVersionLatestFile[] LatestFiles;
 
         [JsonProperty("name")]
         public string Name;
@@ -82,34 +68,22 @@ namespace Hyperpack.Models.CurseV2
         [JsonProperty("portalName")]
         public string PortalName;
 
-        [JsonProperty("primaryAuthorName")]
-        public string PrimaryAuthorName;
-
-        [JsonProperty("primaryCategoryAvatarUrl")]
-        public string PrimaryCategoryAvatarUrl;
-
-        [JsonProperty("primaryCategoryName")]
-        public string PrimaryCategoryName;
-
-        [JsonProperty("rating")]
-        public int Rating;
-
-        [JsonProperty("sectionName")]
-        public string SectionName;
+        [JsonProperty("primaryLanguage")]
+        public string PrimaryLanguage;
 
         [JsonProperty("slug")]
         public string Slug;
 
-        [JsonProperty("stage")]
-        public int Stage;
-
         [JsonProperty("status")]
-        public int Status;
+        public ProjectStatus Status;
 
         [JsonProperty("summary")]
         public string Summary;
 
         [JsonProperty("websiteUrl")]
         public string WebsiteUrl;
+
+        [JsonProperty("files")]
+        public AddonFile[] Files;
     }
 }

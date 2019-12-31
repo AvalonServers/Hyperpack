@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace Hyperpack.Models.CurseV2
+namespace Hyperpack.Models.CurseProxy
 {
     public struct AddonModule
     {

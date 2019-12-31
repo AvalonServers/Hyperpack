@@ -1,11 +1,12 @@
 using Newtonsoft.Json;
+using System;
 
-namespace Hyperpack.Models.CurseV2
+namespace Hyperpack.Models.CurseProxy
 {
-    public struct AddonGameVersion
+    public struct GameVersionLatestFile
     {
         [JsonProperty("fileType")]
-        public int FileType;
+        public FileType FileType;
 
         [JsonProperty("gameVersion")]
         public string GameVersion;

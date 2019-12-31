@@ -6,7 +6,9 @@ properties:
       - "Skye"
       - "ThePiGuy24"
   minecraft:
-      version: "1.12.2"
+      versions: 
+        - "1.12.2"
+        - "1.12"
       forge: "latest"
 sources:
   - provider: curse
@@ -150,7 +152,7 @@ sources:
       - side: server
         mods:
           - swingthroughgrass
-          - matterlink
+          #- matterlink
       - side: client
         mods:
           - thaumicJei
@@ -178,7 +180,7 @@ sources:
                   description: "Can be used to view NBT trees. Developer use only."
       - side: both
         mods:
-        - laggogles:
+        - laggoggles:
             description: "***Admin/diagnostic tool. Leave off unless asked to help test performance issues."
         - sampler:
             description: "***Admin/diagnostic tool. Leave off unless asked to help test performance issues."

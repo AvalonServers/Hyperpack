@@ -1,12 +1,13 @@
 using YamlDotNet;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
+using Newtonsoft.Json;
 using Hyperpack.Models.Internal;
 using Hyperpack.Services;
 using System;
 using System.IO;
 using System.Threading.Tasks;
-using System.Diagnostics;
+using System.Collections.Generic;
 
 namespace Hyperpack.Helpers
 {
@@ -45,6 +46,21 @@ namespace Hyperpack.Helpers
                 Console.WriteLine("Caught exception while attempting to load and parse the pack configuration file:");
                 Console.WriteLine(e.ToString());
                 return null;
+            }
+        }
+
+        /// <summary>
+        /// Saves a pack to its corresponding lockfile.
+        /// </summary>
+        internal static async Task LockPack(string dir, Pack pack) {
+            if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
+
+            try {
+                var str = JsonConvert.SerializeObject(pack, Formatting.Indented);
+                await File.WriteAllTextAsync(Path.Join(dir, "pack.lock"), str);
+            } catch (Exception e) {
+                Console.WriteLine("Caught exception while attempting to save the pack lockfile:");
+                Console.WriteLine(e.ToString());
             }
         }
     }

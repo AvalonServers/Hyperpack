@@ -1,8 +1,9 @@
 using Newtonsoft.Json;
+using System;
 
-namespace Hyperpack.Models.CurseV2
+namespace Hyperpack.Models.CurseProxy
 {
-    public struct File
+    public struct AddonFile
     {
         [JsonProperty("alternateFileId")]
         public int AlternateFileId;
@@ -14,22 +15,25 @@ namespace Hyperpack.Models.CurseV2
         public string DownloadUrl;
 
         [JsonProperty("fileDate")]
-        public string FileDate;
+        public DateTime FileDate;
+
+        [JsonProperty("fileLength")]
+        public long FileLength;
         
         [JsonProperty("fileName")]
         public string FileName;
 
-        [JsonProperty("fileNameOnDisk")]
-        public string FileNameOnDisk;
-
         [JsonProperty("fileStatus")]
-        public int FileStatus;
+        public FileStatus FileStatus;
 
         [JsonProperty("gameVersion")]
         public string[] GameVersion;
 
         [JsonProperty("id")]
         public int Id;
+
+        [JsonProperty("installMetadata")]
+        public string InstallMetadata;
 
         [JsonProperty("isAlternate")]
         public bool IsAlternate;
@@ -44,6 +48,6 @@ namespace Hyperpack.Models.CurseV2
         public long PackageFingerprint;
 
         [JsonProperty("releaseType")]
-        public int ReleaseType;
+        public FileType ReleaseType;
     }
 }

@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace Hyperpack.Models.CurseV2
+namespace Hyperpack.Models.CurseProxy
 {
     public struct AddonDependency
     {
@@ -8,6 +8,6 @@ namespace Hyperpack.Models.CurseV2
         public int AddonId;
 
         [JsonProperty("type")]
-        public int Type;
+        public DependencyType Type;
     }
 }

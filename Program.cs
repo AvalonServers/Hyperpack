@@ -21,13 +21,13 @@ namespace Hyperpack
 
             // Load our cache path
             var cachePath = PathHelpers.GetCachePath();
-            var cache = new CacheService(new DirectoryInfo(cachePath));
-            await cache.Init();
+            var cache = new MetaCache(new DirectoryInfo(cachePath));
+            await cache.InitAsync();
 
             // Load injected services
             var collection = new ServiceCollection();
             collection.AddSingleton<CurseApiService>();
-            collection.AddSingleton<CacheService>(cache);
+            collection.AddSingleton<MetaCache>(cache);
             collection.AddScoped<CurseProvider>();
             collection.AddScoped<UrlProvider>();
             collection.AddScoped<PackService>();
