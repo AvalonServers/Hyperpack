@@ -2,11 +2,12 @@
 using System.IO;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using CommandLine;
 
 using Hyperpack.Models.Internal;
 using Hyperpack.Services;
-using Hyperpack.Services.Providers;
+using Hyperpack.Services.Resolvers;
 using Hyperpack.Helpers;
 
 namespace Hyperpack
@@ -17,26 +18,48 @@ namespace Hyperpack
 
         public static async Task<int> Main(string[] args)
         {
-            var parsed = Parser.Default.ParseArguments<BuildArguments, PublishArguments>(args);
+            var result = Parser.Default.ParseArguments(args, new Type[] { 
+                typeof(BuildArguments), 
+                typeof(PublishArguments) 
+            });
+
+            BaseArguments baseArgs;
+            if (result.Tag == ParserResultType.Parsed) {
+                var parsed = result as Parsed<object>;
+                baseArgs = (BaseArguments) parsed.Value;
+            } else {
+                // print errors
+                return 1;
+            }
 
             // Load our cache path
             var cachePath = PathHelpers.GetCachePath();
-            var cache = new MetaCache(new DirectoryInfo(cachePath));
+            var cache = new CacheService(new DirectoryInfo(cachePath));
             await cache.InitAsync();
 
             // Load injected services
             var collection = new ServiceCollection();
             collection.AddSingleton<CurseApiService>();
-            collection.AddSingleton<MetaCache>(cache);
-            collection.AddScoped<CurseProvider>();
-            collection.AddScoped<UrlProvider>();
+            collection.AddSingleton<CacheService>(cache);
+            collection.AddScoped<CurseResolver>();
+            collection.AddScoped<UrlResolver>();
             collection.AddScoped<PackService>();
-            collection.AddScoped<DependencyResolver>();
+            collection.AddScoped<ResolverService>();
+            collection.AddScoped<FetcherService>();
+            collection.AddLogging(logging => {
+                logging.AddConsole();
+
+                if (baseArgs.Verbose) {
+                    logging.SetMinimumLevel(LogLevel.Debug);
+                } else {
+                    logging.SetMinimumLevel(LogLevel.Information);
+                }
+            });
 
             provider = collection.BuildServiceProvider();
 
             // Parse arguments
-            return parsed.MapResult(
+            return result.MapResult(
                 (BuildArguments a) => Build(a).GetAwaiter().GetResult(),
                 (PublishArguments a) => Publish(a).GetAwaiter().GetResult(),
                 errs => 1
@@ -44,19 +67,23 @@ namespace Hyperpack
         }
 
         private static async Task<int> Build(BuildArguments args) {
-            var path = PackHelpers.GetPackPath(args.PackDirectory);
-            var pack = await PackHelpers.LoadPack(path);
-            if (pack == null) return 1;
-
-            var service = provider.GetRequiredService<PackService>();
-            service.InitFrom(pack, new DirectoryInfo(path));
-
-            await service.Build();
-            return 0;
+            var service = await LoadPack(args.PackDirectory);
+            return await service.Build() ? 0 : 1;
         }
 
         private static async Task<int> Publish(PublishArguments args) {
-            return 0;
+            var service = await LoadPack(args.PackDirectory, true);
+            return await service.Publish() ? 0 : 1;
+        }
+
+        private static async Task<PackService> LoadPack(string dir, bool lockfile = false) {
+            var path = PackHelpers.GetPackPath(dir);
+            var pack = await PackHelpers.LoadPack(path, lockfile);
+            if (pack == null) return null;
+
+            var service = provider.GetRequiredService<PackService>();
+            service.InitFrom(pack, new DirectoryInfo(path));
+            return service;
         }
     }
 

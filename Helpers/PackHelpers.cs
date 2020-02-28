@@ -26,22 +26,29 @@ namespace Hyperpack.Helpers
             return folder;
         }
 
-        internal static async Task<Pack> LoadPack(string dir) {
-            var path = Path.Join(dir, "pack.yaml");
+        internal static async Task<Pack> LoadPack(string dir, bool lockfile = false) {
+            var filename = lockfile ? "pack.lock" : "pack.yaml";
+
+            var path = Path.Join(dir, filename);
             if (string.IsNullOrWhiteSpace(dir) || !File.Exists(path)) {
-                Console.WriteLine($"Could not find pack.yaml in {dir}. Please ensure the path to the pack is correct.");
+                Console.WriteLine($"Could not find {filename} in {dir}. Please ensure the path to the pack is correct.");
                 return null;
             }
-
-            var deserialiser = new DeserializerBuilder()
-            .WithNamingConvention(UnderscoredNamingConvention.Instance)
-            .Build();
 
             try {
                 var content = await File.ReadAllTextAsync(path);
 
-                using (var reader = new StringReader(content))
-                    return deserialiser.Deserialize<Pack>(reader);
+                // deserialise JSON if lockfile, else YAML
+                if (lockfile) {
+                    return JsonConvert.DeserializeObject<Pack>(content);
+                } else {
+                    var deserialiser = new DeserializerBuilder()
+                        .WithNamingConvention(UnderscoredNamingConvention.Instance)
+                        .Build();
+                    using (var reader = new StringReader(content))
+                        return deserialiser.Deserialize<Pack>(reader);
+                }
+                
             } catch (Exception e) {
                 Console.WriteLine("Caught exception while attempting to load and parse the pack configuration file:");
                 Console.WriteLine(e.ToString());

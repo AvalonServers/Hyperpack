@@ -11,7 +11,7 @@ using System.Net.Http;
 using System;
 using System.Collections.Generic;
 
-namespace Hyperpack.Services.Providers
+namespace Hyperpack.Services.Resolvers
 {
     public class CurseApiService
     {
@@ -45,6 +45,7 @@ namespace Hyperpack.Services.Providers
                             status
                             websiteUrl
                             files() {
+                                id
                                 dependencies() {
                                     addonId
                                     type
@@ -65,6 +66,8 @@ namespace Hyperpack.Services.Providers
 
             try {
                 var response = await _graphQl.PostAsync(request);
+                if (response.Data == null) throw new Exception("Error while contacting Curse API GraphQL");
+
                 var data = response.GetDataFieldAs<List<Addon>>("addons");
 
                 return data;

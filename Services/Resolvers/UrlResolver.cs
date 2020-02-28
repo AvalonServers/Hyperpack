@@ -2,17 +2,18 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using Hyperpack.Models.Internal;
 using Hyperpack.Models.Dependency;
+using Hyperpack.Helpers.Exceptions;
 
-namespace Hyperpack.Services.Providers
+namespace Hyperpack.Services.Resolvers
 {
-    public class UrlProvider : IProvider
+    public class UrlResolver : IResolver
     {
-        public async Task<IResolvedMod[]> ResolveAsync(Source source, PackPropertiesMinecraft props)
+        public async Task<IResolvedMod[]> ResolveAsync(ModExtensionPairs mods, PackPropertiesMinecraft props)
         {
             var resolved = new List<IResolvedMod>();
-            foreach (var mod in source.Mods) {
+            foreach (var mod in mods) {
                 resolved.Add(new UrlResolvedMod() {
-                    Url = (string)mod
+                    Url = (string)mod.Key
                 });
             }
 

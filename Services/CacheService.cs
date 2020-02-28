@@ -8,12 +8,12 @@ using System.Collections.Generic;
 
 namespace Hyperpack.Services
 {
-    public class MetaCache
+    public class CacheService
     {
         private DirectoryInfo _cacheDir;
         private readonly string _cacheFile;
         private IDictionary<string, JObject> _cache;
-        public MetaCache(DirectoryInfo cacheDir, string cacheFile = "cache.json") {
+        public CacheService(DirectoryInfo cacheDir, string cacheFile = "cache.json") {
             _cacheDir = cacheDir;
             _cacheFile = Path.Join(cacheDir.FullName, cacheFile);
         }

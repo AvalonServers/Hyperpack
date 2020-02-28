@@ -1,32 +1,36 @@
-using Hyperpack.Services.Providers;
+using Hyperpack.Services.Resolvers;
 using Hyperpack.Models.Internal;
 using System;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Linq;
 
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Hyperpack.Services
 {
-    public class DependencyResolver
+    /// <summary>
+    /// Provides a high level interface to resolve mods for a pack.
+    /// </summary>
+    public class ResolverService
     {
         private readonly IServiceProvider _serviceProvider;
 
-        private static IDictionary<string, Type> ProviderMapper = new Dictionary<string, Type>() {
-            { "curse", typeof(CurseProvider) },
-            { "url", typeof(UrlProvider) }
+        private static IDictionary<string, Type> ResolverMapping = new Dictionary<string, Type>() {
+            { "curse", typeof(CurseResolver) },
+            { "url", typeof(UrlResolver) }
         };
 
-        private IDictionary<string, IProvider> Providers;
+        private IDictionary<string, IResolver> Resolvers;
 
-        public DependencyResolver(IServiceProvider serviceProvider) {
+        public ResolverService(IServiceProvider serviceProvider) {
             _serviceProvider = serviceProvider;
 
-            // Register all the provider services in the mapper
-            Providers = new Dictionary<string, IProvider>();
-            foreach (var provider in ProviderMapper) {
-                var service = (IProvider)_serviceProvider.GetRequiredService(provider.Value);
-                Providers.Add(provider.Key, service);
+            // Register all the resolvers in the mapper
+            Resolvers = new Dictionary<string, IResolver>();
+            foreach (var provider in ResolverMapping) {
+                var service = (IResolver)_serviceProvider.GetRequiredService(provider.Value);
+                Resolvers.Add(provider.Key, service);
             }
         }
 
@@ -39,12 +43,37 @@ namespace Hyperpack.Services
 
             var resolved = new List<IResolvedMod>();
             foreach (var source in list) {
+                // parse the mods to ID pairs
+                var mods = GetModsAsPairs(source);
+
                 // resolve the list of mods
-                var mods = await Providers[source.Provider].ResolveAsync(source, pack.Properties.Minecraft);
-                resolved.AddRange(mods);
+                var rmods = await Resolvers[source.Provider].ResolveAsync(mods, pack.Properties.Minecraft);
+                resolved.AddRange(rmods);
             }
 
             return resolved;
+        }
+
+        private ModExtensionPairs GetModsAsPairs(Source source) {
+            var pairs = new ModExtensionPairs();
+
+            foreach (var mod in source.Mods) {
+                object id;
+                Dictionary<string, dynamic> exts = null;
+
+                // check if the mod is using extended configuration, and if so use that
+                if (mod is Dictionary<dynamic, dynamic> dict) {
+                    var val = dict.First();
+                    id = val.Key;
+                    exts = val.Value as Dictionary<string, dynamic>;
+                } else {
+                    id = mod;
+                }
+
+                pairs.Add(id, exts);
+            }
+
+            return pairs;
         }
 
         private void FlattenSources(Source source, IList<Source> dest) {

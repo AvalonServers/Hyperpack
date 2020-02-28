@@ -1,45 +1,38 @@
 using Hyperpack.Models.Internal;
 using Hyperpack.Models.Dependency;
 using Hyperpack.Models.CurseProxy;
+using Hyperpack.Helpers.Exceptions;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
 using System.Text;
 using System;
 
-namespace Hyperpack.Services.Providers
+namespace Hyperpack.Services.Resolvers
 {
     /// <summary>
     /// Exposes an interface for resolving CurseForge mods.
     /// </summary>
-    public class CurseProvider : IProvider
+    public class CurseResolver : IResolver
     {
+        private readonly ILogger _logger;
         private readonly CurseApiService _api;
-        private readonly MetaCache _cache;
-        public CurseProvider(MetaCache cache, CurseApiService api) {
-            _cache = cache;
+        private const int GAME_ID = 432;
+        public CurseResolver(ILoggerFactory logger, CurseApiService api) {
+            _logger = logger.CreateLogger<CurseResolver>();
             _api = api;
         }
 
-        public async Task<IResolvedMod[]> ResolveAsync(Source group, PackPropertiesMinecraft props)
+        public async Task<IResolvedMod[]> ResolveAsync(ModExtensionPairs mods, PackPropertiesMinecraft props)
         {
             var resolved = new Dictionary<int, IResolvedMod>();
-            var ids = new List<int>();
-            var slugs = new List<string>();
+            var ids = new ModExtensionPairs();
+            var slugs = new ModExtensionPairs();
 
-            foreach (var mod in group.Mods) {
-                dynamic identifier;
-
-                // check if the mod is using extended configuration, and if so use that
-                if (mod is Dictionary<dynamic, dynamic> dict) {
-                    //var pair = mod as Dictionary<dynamic, dynamic>?;
-                    identifier = dict.First().Key;
-                } else {
-                    identifier = mod;
-                }
-
+            foreach (var mod in mods) {
                 int modId = 0;
-                switch(identifier) {
+                switch(mod.Key) {
                     case int val:
                         modId = val;
                         break;
@@ -47,39 +40,41 @@ namespace Hyperpack.Services.Providers
                         int.TryParse(val, out modId);
                         if (modId == 0) {
                             // ensure slug uses proper dash notation
-                            slugs.Add(SlugFromName(val));
+                            slugs.Add(SlugFromName(val), mod.Value);
                             continue;
                         }
                         break;
                     default:
-                        throw new NotImplementedException($"The specified type of mod identifier, {identifier.GetType()}, is not implemented.");
+                        throw new ResolverException($"The specified type of mod identifier, {mod.Key.GetType()}, is not implemented.");
                 }
 
-                ids.Add(modId);
+                ids.Add(modId, mod.Value);
             }
 
-            await ResolveAsync(ids, resolved, props);
-            await ResolveAsync(slugs, resolved, props);
+            await ResolveAsync<int>(ids, resolved, props);
+            await ResolveAsync<string>(slugs, resolved, props);
             
             return resolved.Values.ToArray();
         }
 
-        private async Task ResolveAsync<T>(IEnumerable<T> identifiers, IDictionary<int, IResolvedMod> resolved, PackPropertiesMinecraft props) {
+        private async Task ResolveAsync<T>(ModExtensionPairs identifiers, IDictionary<int, IResolvedMod> resolved, PackPropertiesMinecraft props) {
             if (identifiers.Count() == 0) return;
             IList<Addon> result;
 
-            // query either by ids or slugs
+            _logger.LogDebug("resolving " + string.Join(',', identifiers.Keys));
+
+            // use ids if ident is int, otherwise resolve by slugs
             if (typeof(T) == typeof(int)) {
                 result = await _api.GetAddons(new {
-                    gameId = 432,
+                    gameId = GAME_ID,
                     versions = props.Versions,
-                    ids = identifiers
+                    ids = identifiers.Keys
                 });
             } else if (typeof(T) == typeof(string)) {
                 result = await _api.GetAddons(new {
-                    gameId = 432,
+                    gameId = GAME_ID,
                     versions = props.Versions,
-                    slugs = identifiers
+                    slugs = identifiers.Keys
                 });
             } else {
                 throw new ArgumentException(nameof(identifiers));
@@ -87,26 +82,26 @@ namespace Hyperpack.Services.Providers
 
             foreach (var addon in result) {
                 var tmp = ResolveDefaultFile(addon.Files, props);
-                if (!tmp.HasValue) throw new Exception($"Unable to resolve a suitable file for addon {addon.Id}");
+                if (!tmp.HasValue) throw new ResolverException($"A suitable file could not be found", addon.Id.ToString());
 
                 // Resolve dependencies
                 var file = tmp.Value;
-                var depIds = new List<int>();
+                var depIds = new ModExtensionPairs();
                 foreach (var dep in file.Dependencies) {
                     // Don't need to resolve anything we've already resolved
                     if (resolved.ContainsKey(dep.AddonId)) continue;
-                    if (depIds.Contains(dep.AddonId)) {
-                        // TODO: log a warning, we should't have duplicate dependencies
+                    if (depIds.ContainsKey(dep.AddonId)) {
+                        _logger.LogWarning($"Duplicated dependency {dep.AddonId} for file {file.Id}, skipping");
                         continue;
                     }
 
-                    depIds.Add(dep.AddonId);
+                    depIds.Add(dep.AddonId, null);
                 }
 
-                await ResolveAsync(depIds, resolved, props);
+                await ResolveAsync<int>(depIds, resolved, props);
 
                 if (resolved.ContainsKey(addon.Id)) {
-                    // TODO: print a warning about duplicate mod
+                    _logger.LogDebug($"dependency {addon.Id} already resolved, skipping");
                     return;
                 }
 
