@@ -2,23 +2,26 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <Title>Hyperpack</Title>
-    <Authors>Joseph Marsden</Authors>
+    <Authors>Alex Zero</Authors>
     <Description>A construction tool for Minecraft modpacks.</Description>
-    <Copyright>Copyright (C) 2019 Joseph Marsden</Copyright>
+    <Copyright>Copyright (C) 2020 Alex Zero</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CommandLineParser" Version="2.6.0" />
-    <PackageReference Include="GraphQL.Client" Version="1.0.3" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.2" />
-    <PackageReference Include="Microsoft.Extensions.Logging" Version="3.1.2" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="3.1.2" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
-    <PackageReference Include="RestSharp" Version="106.6.10" />
-    <PackageReference Include="YamlDotNet" Version="7.0.0" />
+    <PackageReference Include="CommandLineParser" Version="2.8.0" />
+    <PackageReference Include="GraphQL.Client" Version="3.2.0" />
+    <PackageReference Include="GraphQL.Client.Abstractions" Version="3.2.0" />
+    <PackageReference Include="GraphQL.Client.Serializer.Newtonsoft" Version="3.2.0" />
+    <PackageReference Include="GraphQL.Primitives" Version="3.2.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="5.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="RestSharp" Version="106.11.7" />
+    <PackageReference Include="YamlDotNet" Version="9.1.0" />
   </ItemGroup>
 
 </Project>

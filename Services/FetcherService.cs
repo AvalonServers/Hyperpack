@@ -1,4 +1,7 @@
 using Microsoft.Extensions.Logging;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using Hyperpack.Models.Internal;
 
 namespace Hyperpack.Services
 {
@@ -12,6 +15,14 @@ namespace Hyperpack.Services
         public FetcherService(ILoggerFactory logger, CacheService cache) {
             _logger = logger.CreateLogger<FetcherService>();
             _cache = cache;
+        }
+
+        public async Task DownloadAsync(IDownloadableMod mod) {
+            
+        }
+
+        public async Task DownloadAsync(IEnumerable<IDownloadableMod> mod) {
+
         }
     }
 }

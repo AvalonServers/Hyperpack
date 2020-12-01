@@ -4,7 +4,7 @@ using System;
 
 namespace Hyperpack.Models.Dependency
 {
-    public class UrlResolvedMod : IResolvedMod, IHttpDownloadable
+    public class UrlResolvedMod : IDownloadableMod
     {
         public ProviderType Provider => ProviderType.Url;
         public Guid Identifier { get; private set; } = Guid.NewGuid();

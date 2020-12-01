@@ -6,7 +6,7 @@ using Hyperpack.Models.CurseProxy;
 
 namespace Hyperpack.Models.Dependency
 {
-    public class CurseResolvedMod : IResolvedMod, IHttpDownloadable, IHashed
+    public class CurseResolvedMod : IDownloadableMod, IHashed
     {
         public ProviderType Provider => ProviderType.Curse;
         public Guid Identifier { get; private set; } = Guid.NewGuid();

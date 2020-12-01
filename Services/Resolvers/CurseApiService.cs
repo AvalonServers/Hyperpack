@@ -1,13 +1,9 @@
 using RestSharp;
-using GraphQL.Client;
-using GraphQL.Common.Request;
-using GraphQL.Common.Response;
-using Newtonsoft.Json;
-using Hyperpack.Models.Internal;
+using GraphQL;
+using GraphQL.Client.Http;
+using GraphQL.Client.Serializer.Newtonsoft;
 using Hyperpack.Models.CurseProxy;
-using Hyperpack.Helpers;
 using System.Threading.Tasks;
-using System.Net.Http;
 using System;
 using System.Collections.Generic;
 
@@ -19,7 +15,7 @@ namespace Hyperpack.Services.Resolvers
         public const string CURSEFORGE_URL = "https://minecraft.curseforge.com/projects";
 
         public const string USER_AGENT = "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0";
-        private readonly GraphQLClient _graphQl = new GraphQLClient($"{PROXY_URL}/graphql");
+        private readonly GraphQLHttpClient _graphQl = new GraphQLHttpClient($"{PROXY_URL}/graphql", new NewtonsoftJsonSerializer());
         
         public async Task<IList<Addon>> GetAddons(object variables) {
             var request = new GraphQLRequest {
@@ -65,12 +61,8 @@ namespace Hyperpack.Services.Resolvers
             };
 
             try {
-                var response = await _graphQl.PostAsync(request);
-                if (response.Data == null) throw new Exception("Error while contacting Curse API GraphQL");
-
-                var data = response.GetDataFieldAs<List<Addon>>("addons");
-
-                return data;
+                var response = await _graphQl.SendQueryAsync<GetAddonsResponse>(request);
+                return response.Data.Addons;
             } catch (Exception e) {
                 throw e;
             }

@@ -67,13 +67,17 @@ namespace Hyperpack
         }
 
         private static async Task<int> Build(BuildArguments args) {
-            var service = await LoadPack(args.PackDirectory);
-            return await service.Build() ? 0 : 1;
+            var pack = await LoadPack(args.PackDirectory);
+            if (pack == null) return 1;
+
+            return await pack.Build() ? 0 : 1;
         }
 
         private static async Task<int> Publish(PublishArguments args) {
-            var service = await LoadPack(args.PackDirectory, true);
-            return await service.Publish() ? 0 : 1;
+            var pack = await LoadPack(args.PackDirectory, true);
+            if (pack == null) return 1;
+
+            return await pack.Publish() ? 0 : 1;
         }
 
         private static async Task<PackService> LoadPack(string dir, bool lockfile = false) {
